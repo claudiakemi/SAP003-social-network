@@ -20,7 +20,7 @@ function Feed() {
    <h2>Post</h2>
   ${Post({ class: 'textarea', id: 'post-textarea', placeholder: 'Escreva aqui', type:'text'})}
   ${Button({ title: 'Postar', class: 'primary-button', onClick: Posts})}
-  <div id='banana'></div>
+  <section id='timeline'></section>
   `;
   return template;
 };
@@ -39,20 +39,20 @@ function Posts() {
   console.log(post);
   dataBase.collection('posts').add(post)
   .then(function loadFeed(post) {
-    document.getElementById('banana').innerHTML='Carregando...';
+    document.getElementById('timeline').innerHTML='Carregando...';
     dataBase.collection('posts').orderBy('timestamp', 'desc').get().then((snap) => {
-      document.getElementById('banana').innerHTML='';
+      document.getElementById('timeline').innerHTML='';
 
       snap.forEach((post) => {
         const postTemplate = `
-        <section class='postMessage' id='${post.id}'>
+        <div class='postMessage' id='${post.id}'>
         ${post.data().timestamp}:
         ${post.data().user_id}
         ${post.data().text}
         ${post.data().likes}
-        </section>
+        </div>
         `;
-        document.getElementById('banana').innerHTML += postTemplate;
+        document.getElementById('timeline').innerHTML += postTemplate;
 
       });
     });
