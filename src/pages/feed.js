@@ -27,7 +27,7 @@ function Posts() {
     .then((docRef) => {
       document.querySelector('.timeline').insertAdjacentHTML('afterbegin', `
     <ul data-id='${docRef.id}'>
-    ${text}
+    ${text} 
     ${window.button.component({
       dataId: docRef.id,
       class: 'primary-button',

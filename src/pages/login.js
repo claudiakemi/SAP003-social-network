@@ -7,7 +7,7 @@ function AuthEmailPassButton() {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((user) => {
       if (user) {
-        window.location.hash = '#home';
+        window.location.hash = '#feed';
         }
       })
         .catch((error) => {
@@ -28,7 +28,7 @@ function Google() {
     var errorMessage = error.message;
     var email = error.email;
     var credential = error.credential;
-  });
+  })
 }
 
 function Login() {

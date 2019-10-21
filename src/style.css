@@ -77,6 +77,8 @@ float: none;
 .logo {
   width: 15%;
   transform: translate(140%,120%);
+  margin-left: 800px;
+  margin-bottom: 50px;
 }
 
 #h2{
@@ -102,6 +104,7 @@ float: none;
   background-color: #ffa05a;
     font-family: 'Ubuntu', sans-serif;
     color: #f0f4f3;
+    margin-left: 100px;
 }
 
 .image{

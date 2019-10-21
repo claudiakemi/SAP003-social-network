@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Social Network</title>
+  <title>Rede Tech</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class='background'>
   <main class='container'></main>
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
   <script type="module" src="./main.js"></script>
+  <!--
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+  -->
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -23,10 +29,12 @@
       storageBucket: "rede-social-tech.appspot.com",
       messagingSenderId: "417687051409",
       appId: "1:417687051409:web:8dd4113911ee43a7447330",
-      measurementId: "G-2DZ77BZ3HW"
-    };
+      measurementId: "G-2DZ77BZ3HW",
+    }
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    </script>
+      firebase.initializeApp(firebaseConfig);
+      //firebase.analytics();
+  </script>
 </body>
+
 </html>
