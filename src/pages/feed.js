@@ -1,36 +1,25 @@
 import Button from '../components/button.js';
 import Post from '../components/post.js';
 
-function signOut () {
-  firebase.auth().signOut().then(function() {
+const dataBase = firebase.firestore();
+
+function signOut() {
+  firebase.auth().signOut().then(function () {
     window.location.hash = '#login';
-    alert ('Agora tu saiu.')
+    alert('Agora tu saiu.')
   })
 };
 
-function profile () {
+function profile() {
   window.location.hash = '#perfil';
 };
 
-function Feed() {
-  const template = `
-  <h1>Feed</h1>
-  ${Button({ title: 'Sair', class: 'primary-button', onClick: signOut})}
-  ${Button({ title: 'Perfil', class: 'primary-button', onClick: profile})}
-   <h2>Post</h2>
-  ${Post({ class: 'textarea', id: 'post-textarea', placeholder: 'Escreva aqui', type:'text'})}
-  ${Button({ title: 'Postar', class: 'primary-button', onClick: Posts})}
-  <section id='timeline'></section>
-  `;
-  return template;
-};
-
 function Posts() {
-
   const dataBase = firebase.firestore();
+  //const id = firebase.auth().currentUser.uid;
   const textInput = document.querySelector('.textarea');
   const post = {
-    timestamp: new Date().toLocaleDateString('pt-BR') + ':' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds(),
+    timestamp: new Date().toLocaleDateString('pt-BR') + '-' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds(),
     text: textInput.value,
     likes: 0,
     coments: [],
@@ -38,30 +27,78 @@ function Posts() {
   }
   console.log(post);
   dataBase.collection('posts').add(post)
-  .then(function loadFeed(post) {
-    document.getElementById('timeline').innerHTML='Carregando...';
-    dataBase.collection('posts').orderBy('timestamp', 'desc').get().then((snap) => {
-      document.getElementById('timeline').innerHTML='';
+    .then((docRef) => {
+      document.querySelector('#timeline').insertAdjacentHTML('afterbegin', `
+    <ul data-id='${docRef.id}'>
+      ${post.user_id}
+      ${post.timestamp}
+      ${post.text}
+      ${post.likes}
+      ${post.comments}
+      ${window.button.component({
+        dataId: docRef.id,
+        title: 'Deletar',
+        onClick: window.feed.deletePost,
+      })}
+      ${window.button.component({
+        dataId: docRef.id,
+        class: 'primary-button',
+        title: 'v',
+        onClick: window.feed.editPost,
+      })}
 
-      snap.forEach((post) => {
-        const postTemplate = `
-        <div class='postMessage' id='${post.id}'>
-        ${post.data().timestamp}:
-        ${post.data().user_id}
-        ${post.data().text}
-        ${post.data().likes}
-        </div>
-        `;
-        document.getElementById('timeline').innerHTML += postTemplate;
-
-      });
-    });
-  }
-)
+    </ul>`
+      );
+    }
+    )
 
 };
 
+function deletePost(event) {
+  console.log('oi')
+  const id = event.target.dataset.id;
+  firebase.firestore().collection('posts').doc(id).delete();
+  event.target.parentElement.remove();
+  // document.querySelector(`li[data-id='${id}']`).remove();
+}
+
+
+function Feed() {
+  console.log('oizinho')
+  let postTemplate = '';
+  //const dataBase = firebase.firestore();
+ //document.getElementById('timeline').innerHTML = 'Carregando...';
+ firebase.firestore().collection('posts').orderBy('timestamp', 'desc').get().then((snap) => {
+  //document.getElementById('timeline').innerHTML = '';
+
+    snap.forEach((post) => {
+      postTemplate += `
+      <div data-id='${post.id}' class='postMessage'>
+      ${post.data().timestamp}:
+      ${post.data().user_id}
+      ${post.data().text}
+      ${post.data().likes}
+      ${Button({ dataId: post.id, title: 'Deletar', onClick: deletePost })}
+      </div>
+      `;
+      //document.getElementById('timeline').innerHTML += postTemplate;
+
+    });
+
+  const template = `
+  <h1>Feed</h1>
+  ${Button({ title: 'Sair', class: 'primary-button', onClick: signOut })}
+  ${Button({ title: 'Perfil', class: 'primary-button', onClick: profile })}
+   <h2>Post</h2>
+  ${Post({ class: 'textarea', id: 'post-textarea', placeholder: 'Escreva aqui', type: 'text' })}
+  ${Button({ title: 'Postar', class: 'primary-button', onClick: Posts })}
+  <section id='timeline'>${postTemplate}</section>
+  `;
+  return template;
+})}
+
 window.feed = {
+    deletePost
 };
 
 
