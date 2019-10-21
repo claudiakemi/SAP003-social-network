@@ -63,8 +63,11 @@
   margin: 5px;
   padding: 10px;
   border: solid;
-  border-color: white;
   border-radius: 10px;
+  list-style: none;
+  border-color: gray;
+  border-radius: 5px;
+  background-color: #ffffff;
   }
 }
 
@@ -102,9 +105,8 @@ float: none;
 
 .background {
   background-color: #ffa05a;
-    font-family: 'Ubuntu', sans-serif;
-    color: #f0f4f3;
-    margin-left: 100px;
+  font-family: 'Ubuntu', sans-serif;
+  color: #f0f4f3;
 }
 
 .image{
@@ -140,7 +142,9 @@ float: none;
   transform: translate(400px, -90px);
   border-radius: 30px;
   border-color: gray;
+  list-style: none;
 }
+
 .postMessage{
   display: flex;
   justify-content: flex-end;
@@ -151,5 +155,6 @@ float: none;
   border-color: gray;
   border-radius: 5px;
   background-color: #ffffff;
+  list-style: none; 
 }
 }

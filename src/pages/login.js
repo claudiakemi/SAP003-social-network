@@ -9,12 +9,11 @@ function AuthEmailPassButton() {
       if (user) {
         window.location.hash = '#feed';
         }
-      })
-        .catch((error) => {
-          console.error(error.code);
-          console.error(error.message);
-          alert('Falha ao autenticar, verifique o e-mail e senha inseridos.');
-    })
+      }).catch((error) => {
+        console.error(error.code);
+        console.error(error.message);
+        alert('Falha ao autenticar, verifique o e-mail e senha inseridos.');
+      });
 }
 
 function Google() {
