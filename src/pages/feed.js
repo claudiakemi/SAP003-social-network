@@ -8,9 +8,6 @@ function signOut() {
   });
 }
 
-function profile() {
-  window.location.hash = '#profile';
-}
 
 function AddPostToFirebase() {
   const dataBase = firebase.firestore();
@@ -101,20 +98,6 @@ function loadFeed () {
   });
 }
 
-function loadCard () {
-  firebase.firestore().collection('persona').get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((persona) => {
-      const cardFeed =  `<li data-id='${persona.id}' class='card'>
-      ${persona.data().name} <br>
-      ${persona.data().profession}
-  </li>
-    </div>
-  `;
-  document.querySelector('.cardProfile').innerHTML = cardFeed;
-      });
-    });
-}
 
 function Feed(props) {
   const name = firebase.auth().currentUser.displayName;
@@ -131,23 +114,17 @@ function Feed(props) {
   });
 
   window.feed.loadFeed();
-  window.feed.loadCard();
 
   const template = `
   <header class='header'>
-    <h1><img class='logo-feed' src='logoredetech.png'/></a></h1>
-    <nav>
-        <li class="left">${Button({ class: 'left',
+    <img class='logo-mobile' src='logobranco.png'/></a>
+    <nav class='left'>
+        ${Button({ class: 'left',
         title: '🚪Encerrar Sessão',
         onClick: signOut,
-      })}</li>
-      <li class="right">${Button({ class: 'right',
-          title: `${name}`,
-          onClick: profile,
-      })}</li>
+      })}
     </nav>
 </header>
-  <h2>Post</h2>
   <div class='post'>
   ${Post({
     class: 'textarea',
@@ -162,7 +139,6 @@ function Feed(props) {
   })}
   <div>
   <ul class= 'timeline'>${postsLayout}</ul>
-  <ul class= 'cardProfile'></ul>
   `;
   return template;
 }
@@ -172,7 +148,6 @@ window.feed = {
   editPost,
   loadFeed,
   AddPostToFirebase,
-  loadCard,
   saveEdit
 };
 

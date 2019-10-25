@@ -8,8 +8,13 @@
 
 @media (max-width: 750px) {
 
+  .container {
+    margin: 15px;
+    padding-top: 10px;
+  }
+
   .primary-button {
-    background-color: #ffa05a;
+    background-color: white;
     padding: 5px;
     font-size: 14px;
     border-radius: 25px;
@@ -19,12 +24,6 @@
     margin: 5px;
     width: 30%;
   }
-
-  /* .container{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-  } */
 
   .content {
     display: flex;
@@ -47,25 +46,43 @@
   .background {
     background-color: #ffffff;
     font-family: 'Ubuntu', sans-serif;
-    color: #ffa05a;
+    color: orangered;
   }
 
   .logo {
     display: flex;
-    transform: translate(92px, 50px);
-  }
+    transform: translate(33%, 30%);
+    width: auto;
+    height: auto;
+}
+ .logo-mobile{
+   width: 60px;
+   height: 60px;
+   display: block;
+   justify-content: center;
+ }
 
   .js-email-input {
     border-radius: 30px;
     padding: 10px;
-    width: 50%;
+    width: 70%;
   }
 
   .js-password-input {
     border-radius: 30px;
     margin: 10px 5px;
-    width: 50%;
+    width: 70%;
     padding: 10px;
+  }
+  .left {
+    background-color: transparent;
+    border: 0;
+    color: black;
+    cursor: pointer;
+    list-style: none;
+    /* transform: translate(220%, -320%); */
+    width: 30%;
+    font-weight: bold;
   }
 
   .login{
@@ -99,11 +116,23 @@
   background-color: #ffffff;
   font-family: 'Ubuntu', sans-serif;
   color: black;
-  transform: translate(-40px, 10px);
   }
 
   .bemvinda {
     padding: 15px;
+  }
+  .postHeader {
+    overflow: hidden;
+    background-color: #FFDE82;
+    padding: 10px 10px;
+  }
+
+  .header{
+    background-color: #ffa05a;
+    width: auto;
+    height: 70px;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -135,9 +164,9 @@
   width: 20%;
 }
 
-#h2{
+/* #h2{
   transform: translate(40%,-150%);
-}
+} */
 
 .textarea{
   width: 90%;
@@ -170,7 +199,7 @@
 }
 
 .primary-button {
-  background-color: #ffa05a;
+  background-color: white;
   padding: 10px;
   font-size: 14px;
   border-radius: 25px;
