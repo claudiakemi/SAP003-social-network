@@ -120,7 +120,7 @@ function Feed(props) {
     <img class='logo-mobile' src='logobranco.png'/></a>
     <nav class='left'>
         ${Button({ class: 'left',
-        title: '🚪Encerrar Sessão',
+        title: '🚪Sair',
         onClick: signOut,
       })}
     </nav>

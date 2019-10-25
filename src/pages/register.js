@@ -1,4 +1,3 @@
-
 import Button from '../components/button.js';
 import Input from '../components/input.js';
 
@@ -26,8 +25,8 @@ function createLogin() {
       function createProfile() {
         const template = `
           <img class='logo' src='logoredetech.png'/>
-          <h1>Login</h1>
-          <form>
+          <form class='registro'>
+          <h1>Registre-se</h1>
           ${Input({ class:'js-name-input', placeholder:'Como gostaria ser chamado?', type:'text', })}
           ${Input({ class:'js-email-input', placeholder:'E-mail', type:'email', })}
           ${Input({ class:'js-password-input', placeholder:'Senha', type:'password', })}
