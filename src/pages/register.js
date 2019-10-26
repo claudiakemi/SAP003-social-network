@@ -22,12 +22,12 @@ function createLogin() {
         window.location.hash = '#login'
       }
 
-      function createProfile() {
+      function Register(event) {
         const template = `
           <img class='logo' src='logoredetech.png'/>
           <form class='registro'>
           <h1>Registre-se</h1>
-          ${Input({ class:'js-name-input', placeholder:'Como gostaria ser chamado?', type:'text', })}
+          ${Input({ class:'js-name-input', placeholder:'Como gostaria ser chamado?', type:'text'})}
           ${Input({ class:'js-email-input', placeholder:'E-mail', type:'email', })}
           ${Input({ class:'js-password-input', placeholder:'Senha', type:'password', })}
           ${Button({ class: 'primary-button', id: 'doing-login', title: 'Log In', onClick: createLogin})}
@@ -37,4 +37,4 @@ function createLogin() {
         return template;
       }
 
-export default createProfile;
+export default Register;

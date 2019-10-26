@@ -19,7 +19,7 @@ function locationHashChanged() {
       } else {
         document.querySelector('main').innerHTML = Login();
       }
-  }else {
+  } else {
     document.querySelector('main').innerHTML = Login();
 }});
 }

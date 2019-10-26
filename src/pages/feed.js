@@ -18,7 +18,6 @@ function AddPostToFirebase() {
     timestamp: new Date().toLocaleDateString('pt-BR') + ' - ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds(),
     name,
     text: textInput.value,
-    comments: [],
     user_id: id,
   };
   dataBase.collection('posts').add(post)
@@ -28,7 +27,6 @@ function AddPostToFirebase() {
     <div class='postHeader'>${post.timestamp}</div>
     <div class='postHeader'>${post.name} disse:</div>
     <div id='post_${docRef.id}'>${post.text}</div>
-    ${post.comments}
     ${window.button.component({
       dataId: docRef.id,
       class: 'primary-button',
@@ -118,14 +116,12 @@ function Feed(props) {
   const template = `
   <header class='header'>
     <img class='logo-mobile' src='logobranco.png'/></a>
-    <nav class='left'>
         ${Button({ class: 'left',
         title: '🚪Sair',
         onClick: signOut,
       })}
-    </nav>
 </header>
-  <div class='post'>
+  <section class='post'>
   ${Post({
     class: 'textarea',
     id: 'post-textarea',
@@ -137,7 +133,7 @@ function Feed(props) {
     class: 'primary-button',
     onClick: AddPostToFirebase,
   })}
-  <div>
+  <section>
   <ul class= 'timeline'>${postsLayout}</ul>
   `;
   return template;
