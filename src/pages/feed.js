@@ -65,7 +65,8 @@ function saveEdit () {
   document.getElementById('post_'+id).style.border = '';
   document.querySelector('#edit-'+id).innerHTML = '✏️';
   const text = document.querySelector('#post_'+id).textContent;
-  firebase.firestore().collection('posts').doc(id).update({text});
+  const timestamp = new Date().toLocaleDateString('pt-BR') + ' - ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
+  firebase.firestore().collection('posts').doc(id).update({text, timestamp});
   document.querySelector('#edit-'+id).removeEventListener('click', window.feed.saveEdit);
 }
 

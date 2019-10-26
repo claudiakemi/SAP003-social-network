@@ -157,9 +157,9 @@
   }
 
   .logo {
-    width: 50%;
-    transform: translate(80%,90%);
-  }
+    width: 18%;
+  transform: translate(45%,75%);
+}
 
   .bemvinda {
     padding: 15px;
@@ -177,10 +177,6 @@
     width: 20%;
   }
 
-  /* #h2{
-  transform: translate(40%,-150%);
-  } */
-
   .textarea{
     width: 90%;
     margin: 15px;
@@ -192,7 +188,7 @@
     align-items: center;
     flex-flow: column wrap;
     transform: translate(40%,20%);
-    width: 70%;
+    width: 65%;
   }
 
   .google-btn {
@@ -207,10 +203,6 @@
     font-family: 'Ubuntu', sans-serif;
     color: orangered;
   }
-
-  /* .image{
-    background-image: url('./image.png');
-  } */
 
   .primary-button {
     background-color: white;
@@ -227,14 +219,14 @@
   .js-email-input {
     border-radius: 30px;
     padding: 10px;
-    width: 70%%;
+    width: 35%;
   }
 
   .js-password-input {
     border-radius: 30px;
     margin: 10px;
     padding: 10px;
-    width: 70%%;
+    width: 35%;
   }
 
   .cadastro{
@@ -243,11 +235,12 @@
 
 
   .post{
-  width: 70%;
+  width: 55%;
   flex-direction: column;
   margin: 15px;
   justify-content: center;
   display: flex;
+  align-self: center;
   }
 
   .postMessage{
@@ -274,17 +267,6 @@
     font-weight: bold;
   }
 
-  .right {
-    background-color: transparent;
-    border: 0;
-    color: #fff;
-    cursor: pointer;
-    list-style: none;
-    margin-top: -9.5%;
-    margin-left: 2%;
-    width: 40%;
-    font-weight: bold;
-  }
 
   .header{
     background-color: #ffa05a;
@@ -304,6 +286,7 @@
     background-color: #FFDE82;
     padding: 10px 10px;
   }
+
   .logo-mobile{
     width: 60px;
     height: 60px;
