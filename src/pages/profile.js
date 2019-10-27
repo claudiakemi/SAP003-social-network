@@ -3,9 +3,27 @@ import Input from '../components/input.js';
 
 function deleteProfile(event) {
   const id = event.target.dataset.id;
-  document.querySelector('.display').innerHTML = '';
   firebase.firestore().collection('persona').doc(id).delete();
   event.target.parentElement.remove();
+  
+}
+
+function validateUser(event) {
+  const id = firebase.auth().currentUser.uid;
+  firebase.firestore().collection('persona').get().then((querySnapshot) => {
+    querySnapshot.forEach((persona) => {
+      const user = `${persona.data().user_id}`;
+      if (user == id){
+        window.profile.deleteProfile(event);
+     }
+     });
+    });    
+}
+
+function cleanProfile (){
+  document.querySelector('.js-age-input').value = '';
+  document.querySelector('.js-profession-input').value = '';
+  document.querySelector('.js-interests').value = '';
 }
 
 function salve() {
@@ -29,21 +47,21 @@ function salve() {
       document.querySelector('.display').insertAdjacentHTML('afterbegin', `
       <ul class= 'displayProfile' data-id='${docRef.id}'>
       <img src='${persona.photo}' width='60px' height='60px'/>
-      ${persona.email}<br>
-      ${persona.name}<br>
-      ${persona.age}<br>
-      ${persona.profession}<br>
-      ${persona.interests}<br>
+      E-mail: ${persona.email}<br>
+      Nome: ${persona.name}<br>
+      Idade: ${persona.age}<br>
+      Profissão: ${persona.profession}<br>
+      Interesses: ${persona.interests}<br>
       ${window.button.component({
         dataId: persona.id,
         title: '🗑️',
         class: 'primary-button',
-        disabled: 'disabled',
-        onClick: window.profile.deleteProfile,
+        onClick: window.profile.validateUser,
       })}
       </ul>
       `)
     });
+    cleanProfile()
 }
 
 function Prev() {
@@ -74,10 +92,11 @@ function loadProfile () {
         dataId: persona.id,
         title: '🗑️',
         class: 'primary-button',
-        onClick: window.profile.deleteProfile,
-      })}</li>`
+        onClick: window.profile.validateUser,
+      })}</li>
+      </ul>`
 
-      document.querySelector('.display').innerHTML = postProfile;
+      document.querySelector('.display').innerHTML += postProfile;
     });
   });
 }
@@ -118,7 +137,7 @@ function Profile() {
    ${Input({
     class: 'js-age-input',
     placeholder: 'Idade',
-    type: 'text',
+    type: 'text', required:''
   })}<br><br>
   ${Input({
     class: 'js-profession-input',
@@ -135,7 +154,6 @@ function Profile() {
   ${Button({
     class: 'primary-button',
     title: 'Salvar',
-    disable: 'enable',
     onClick: salve,
   })}
   </form>
@@ -149,7 +167,8 @@ window.profile = {
   loadProfile,
   deleteProfile,
   Prev,
-  signOut
+  signOut,
+  validateUser
 };
 
 export default Profile;
