@@ -44,6 +44,13 @@ function salve() {
       </ul>
       `)
     });
+    window.profile.cleanFields()
+}
+
+function cleanFields(){
+ document.querySelector('.js-age-input').value = '';
+ document.querySelector('.js-profession-input').value = '';
+ document.querySelector('.js-interests').value = '';
 }
 
 function Prev() {
@@ -74,6 +81,7 @@ function loadProfile () {
         dataId: persona.id,
         title: '🗑️',
         class: 'primary-button',
+        disabled: 'disabled',
         onClick: window.profile.deleteProfile,
       })}</li>`
     
@@ -149,7 +157,8 @@ function Profile() {
 
 window.profile = {
   loadProfile,
-  deleteProfile
+  deleteProfile,
+  cleanFields
 };
 
 export default Profile;

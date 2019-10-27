@@ -11,8 +11,13 @@ function createLogin() {
         alert(`Falha ao cadastrar, verifique o e-mail e senha adicionado`)
       })
       .then((cred) => {
+        if(cred){
+          alert('Registrado com sucesso!')
+         window.location.hash = '#feed';
+        }
           cred.user.updateProfile({
           displayName: name,
+
         });
       })
     }
@@ -29,7 +34,7 @@ function createLogin() {
           ${Input({ class:'js-name-input', placeholder:'Como gostaria ser chamado?', type:'text', })}
           ${Input({ class:'js-email-input', placeholder:'E-mail', type:'email', })}
           ${Input({ class:'js-password-input', placeholder:'Senha', type:'password', })}
-          ${Button({ class: 'primary-button', id: 'doing-login', title: 'Log In', onClick: createLogin})}
+          ${Button({ class: 'primary-button', id: 'doing-login', title: 'Registrar', onClick: createLogin})}
           ${Button({ class: 'primary-button', id: 'come-back', title: 'Voltar', onClick: comeBack})}
           </form>`;
 
