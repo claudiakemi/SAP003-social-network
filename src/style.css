@@ -50,12 +50,12 @@
     margin-top: 10%;
     margin-bottom: 10%;
   }
-  .logo-mobile {
-    width: 60px;
-    height: 60px;
-    display: block;
-    margin-left: 10px;
-  }
+    .logo-mobile {
+      width: 60px;
+      height: 60px;
+      display: block;
+      margin-left: 10px;
+    }
   .js-email-input {
     border-radius: 30px;
     padding: 10px;
@@ -73,18 +73,17 @@
     border: 0;
     color: #fff;
     cursor: pointer;
-    list-style: none;
-    /* transform: translate(220%, -320%); */
+    list-style: none;   
     width: 30%;
     font-weight: bold;
+    margin-left: 50%;
   }
   .right {
     background-color: transparent;
     border: 0;
     color: #fff;
     cursor: pointer;
-    list-style: none;
-    transform: translate(250%, -200%);
+    list-style: none;   
     width: 30%;
     font-weight: bold;
   }
@@ -109,23 +108,25 @@
   .postMessage {
     margin: 5px;
     padding: 5px;
-    border: solid;
-    border-radius: 10px;
+    border: solid;    
     list-style: none;
     border-color: orange;
-    border-radius: 2px;
+    border-radius: 5px;
     background-color: #ffffff;
     font-family: 'Ubuntu', sans-serif;
     color: black;
   }
+
   .bemvinda {
     padding: 15px;
   }
+
   .postHeader {
     overflow: hidden;
     background-color: #FFDE82;
     padding: 10px 10px;
   }
+
   .header {
     background-color: #ffa05a;
     width: auto;
@@ -133,8 +134,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 30%;
+    margin-bottom: 10%;
+    justify-content: space-between;
   }
+
   .js-name-input {
     border-radius: 30px;
     margin: 10px 5px;
@@ -154,11 +157,60 @@
     display: block;
     margin-left: 18%;
   }
+
   .card {
     border: 3px solid orange;
     list-style: none;
     font-family: 'Ubuntu', sans-serif;
     color: black;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .profile{
+    border-radius: 30px;
+    margin: 10px 5px;
+    width: 70%;
+    padding: 10px;
+    margin-top: 15%;
+  }
+
+  .js-age-input{
+    border-radius: 30px;
+    padding: 10px;
+    width: 90%;
+    margin-left: 2%;
+
+  }
+
+  .js-profession-input{
+    border-radius: 30px;
+    padding: 10px;
+    width: 90%;
+    margin-left: 2%;
+
+  }
+
+  .js-interests{
+    border-radius: 30px;
+    padding: 10px;
+    width: 90%;
+    margin-left: 2%;
+    margin-bottom:5%;
+
+  }
+
+  .logo-feed {
+    width: 70px;
+    height: 70px;
+    display: block;
+  }
+
+  .logo-mobile-perfil{
+    width: 70px;
+    height: 70px;
+    display: block;
   }
 }
 
@@ -168,6 +220,8 @@
     display: flex;
     flex-direction: column;
   }
+
+  
   .logo {
     width: 18%;
     transform: translate(45%, 75%);
@@ -191,6 +245,7 @@
     width: 90%;
     margin: 15px;
   }
+
   .content {
     position: absolute;
     display: flex;
@@ -200,17 +255,20 @@
     width: 65%;
     margin-top: 10%;
   }
+
   .google-btn {
     background-image: url('./google-icon2.png');
     background-repeat: no-repeat;
     padding: 30px;
     border-radius: 30px;
   }
+
   .background {
     background-color: #ffffff;
     font-family: 'Ubuntu', sans-serif;
     color: orangered;
   }
+
   .primary-button {
     background-color: white;
     padding: 10px;
@@ -222,25 +280,30 @@
     margin: 5px;
     width: 20%;
   }
+
   .js-email-input {
     border-radius: 30px;
     padding: 10px;
     width: 35%;
   }
+
   .js-password-input {
     border-radius: 30px;
     margin: 10px;
     padding: 10px;
     width: 35%;
   }
+
   .js-name-input {
     border-radius: 30px;
     padding: 10px;
     width: 35%;
   }
+
   .cadastro {
     padding: 20px;
   }
+
   .post {
     width: 55%;
     flex-direction: column;
@@ -249,6 +312,7 @@
     display: flex;
     align-self: center;
   }
+
   .postMessage {
     display: flex;
     flex-direction: column;
@@ -261,28 +325,30 @@
     color: black;
     list-style: none;
   }
+
   .left {
     background-color: transparent;
     border: 0;
     color: #fff;
     cursor: pointer;
     list-style: none;
-    transform: translate(250%, -200%);
+    margin-left: 80%;    
     width: 10%;
     font-weight: bold;
     align-self: center;
   }
+
   .right {
     background-color: transparent;
     border: 0;
     color: #fff;
     cursor: pointer;
-    list-style: none;
-    /* transform: translate(250%, -200%); */
+    list-style: none;   
     width: 10%;
     font-weight: bold;
     align-self: center;
   }
+
   .header {
     background-color: #ffa05a;
     width: auto;
@@ -291,29 +357,33 @@
     justify-content: space-between;
     flex-direction: row;
   }
+
   .logo-feed {
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    width: 70px;
+    height: 70px;
+    display: block;
   }
+
   .postHeader {
     overflow: hidden;
     background-color: #FFDE82;
     padding: 10px 10px;
   }
+
   .logo-mobile {
     width: 60px;
     height: 60px;
     display: block;
     justify-content: center;
   }
+
   .card {
     border: 3px solid orange;
     list-style: none;
     font-family: 'Ubuntu', sans-serif;
     color: black;
   }
+
   .logo-register {
     width: 30%;
     display: block;
@@ -322,6 +392,7 @@
     margin-left: 430%;
     margin-top: 2%;
   }
+
   .register-form {
     display: flex;
     flex-direction: column;
@@ -329,7 +400,57 @@
     align-items: center;
     margin-top: 10%;
   }
+
   .reg {
     padding: 2%;
   }
-}
+
+  .profile{
+    border-radius: 30px;
+    margin: 10px 5px;
+    width: 70%;
+    padding: 10px;    
+    margin-top: 5%;
+  }
+  
+  .js-age-input{
+    border-radius: 30px;
+    padding: 10px;
+    width: 30%;
+    margin-left: 2%;
+
+  }
+
+  .js-profession-input{
+    border-radius: 30px;
+    padding: 10px;
+    width: 30%;
+    margin-left: 2%;
+
+  }
+
+  .js-interests{
+    border-radius: 30px;
+    padding: 10px;
+    width: 30%;
+    margin-left: 2%;
+    margin-bottom:5%;
+
+  }
+
+  .logo-mobile-perfil{
+    width: 60px;
+    height: 60px;
+    display: block;
+    justify-content: center;
+    margin-left: 1400%;
+    margin-top: 5%;
+  }
+
+  .info-persona{
+    margin-left: 10%;
+    margin-top: 2%;
+  }
+  }
+  
+

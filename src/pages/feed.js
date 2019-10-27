@@ -65,14 +65,14 @@ function editPost(event) {
 }
 
 function saveEdit() {
-    const id = event.target.dataset.id;
-    document.getElementById('post_' + id).contentEditable = false;
-    document.getElementById('post_' + id).style.border = '';
-    document.querySelector('#edit-' + id).innerHTML = '✏️';
-    const text = document.querySelector('#post_' + id).textContent;
-    const timestamp = new Date().toLocaleDateString('pt-BR') + ' - ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
-    firebase.firestore().collection('posts').doc(id).update({ text, timestamp });
-    document.querySelector('#edit-' + id).removeEventListener('click', window.feed.saveEdit);
+  const id = event.target.dataset.id;
+  document.getElementById('post_' + id).contentEditable = false;
+  document.getElementById('post_' + id).style.border = '';
+  document.querySelector('#edit-' + id).innerHTML = '✏';
+  const text = document.querySelector('#post_' + id).textContent;
+  const timestamp = new Date().toLocaleDateString('pt-BR') + ' - ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+  firebase.firestore().collection('posts').doc(id).update({ text, timestamp });
+  document.querySelector('#edit-' + id).removeEventListener('click', window.feed.saveEdit);
 }
 
 function loadFeed() {
@@ -107,7 +107,7 @@ function loadCard () {
     .then((querySnapshot) => {
       querySnapshot.forEach((persona) => {
       const cardFeed =  `<li data-id='${persona.id}' class='card'>
-      <img src='${persona.data().photo}' width='60px' height='60px'/><br>
+      <img src='${persona.data().photo}' width='60px' height='60px' /><br>
       ${persona.data().name} <br>
       ${persona.data().profession}<br>
   </li>
@@ -135,19 +135,17 @@ function Feed(props) {
     window.feed.loadCard();
 
     const template = `
-  <header class='header'>
-    <h1><img class='logo-feed' src='logobranco.png'/></a></h1>
-    <nav>
-        <li class="left">${Button({ class: 'left',
-        title: '🚪Sair',
-        onClick: signOut,
-      })}</li>
-      <li class="right">${Button({ class: 'right',
-          title: `${name}`,
-          onClick: profile,
-      })}</li>
-    </nav>
-</header>
+    <header class='header'>
+      ${Button({ class: 'right',
+      title: `${name}`,
+      onClick: profile,
+      })}
+      <img class='logo-feed' src='logobranco.png'/>
+      ${Button({ class: 'left',
+      title: '🚪Sair',
+      onClick: signOut,
+      })}  
+      </header>
   <div class='post'>
   ${Post({
     class: 'textarea',

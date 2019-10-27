@@ -61,14 +61,14 @@ function loadProfile () {
   firebase.firestore().collection('persona').get()
   .then((querySnapshot) => {
     querySnapshot.forEach((persona) => {
-      const postProfile = `<ul data-id='${persona.id}' class=''>
-      <li class=''> ${persona.data().name}</li>
-      <li id='persona_${persona.id}'><br>
-      Foto: <img src='${persona.data().photo}' width='60px' height='60px'/><br>
-      <li id='age'>Idade: ${persona.data().age}</li><br>
-      E-mail: ${persona.data().email}<br>
-      <li id='profession'>Profissão: ${persona.data().profession}</li><br>
-      <li id='interests'>Interesses: ${persona.data().interests}</li><br>
+      const postProfile = `<ul data-id='${persona.id}' class='info-persona'>
+      <img src='${persona.data().photo}' width='60px' height='60px'/><br>
+      ${persona.data().name}
+      ${persona.id}'<br>      
+      ${persona.data().age}
+      ${persona.data().email}
+      ${persona.data().profession}
+      ${persona.data().interests}<br>
       <li>
       ${window.button.component({
         dataId: persona.id,
@@ -89,11 +89,11 @@ function Profile() {
       snap.forEach((persona) => {
         displayPersona += `<section>
         Foto: <img src='${persona.photo}' width='60px' height='60px'/>
-        E-mail: ${persona.email} <br><br>
-        Nome: ${persona.name}<br><br>
-        Idade: ${persona.age}<br><br>
-        Profisão: ${persona.profession}<br><br>
-        Interesses: ${persona.interests}<br><br>
+        ${persona.email} 
+        ${persona.name}
+        ${persona.age}
+        ${persona.profession}
+        ${persona.interests}
   </section>`;
             });
         });
@@ -102,14 +102,14 @@ function Profile() {
 
     const template = `
     <header class='header'>
-      <h1><img class='logo-feed' src='logobranco.png'/></a></h1>
-          ${Button({ class: 'left',
-          title: '🚪Sair',
-          onClick: signOut,
-        })}
         ${Button({ class: 'right',
             title: 'Feed',
             onClick: Prev,
+        })}
+        <img class='logo-mobile-perfil' src='logobranco.png'/>
+        ${Button({ class: 'left',
+        title: '🚪Sair',
+        onClick: signOut,
         })}
   </header>
   <form class='profile'>
