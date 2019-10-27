@@ -3,9 +3,27 @@ import Input from '../components/input.js';
 
 function deleteProfile(event) {
   const id = event.target.dataset.id;
-  document.querySelector('.display').innerHTML = '';
+  document.querySelector('.card-persona').innerHTML = '';
   firebase.firestore().collection('persona').doc(id).delete();
   event.target.parentElement.remove();
+}
+
+function validateUser(event) {
+  const id = firebase.auth().currentUser.uid;
+  firebase.firestore().collection('persona').get().then((querySnapshot) => {
+    querySnapshot.forEach((persona) => {
+      const user = `${persona.data().user_id}`;
+      if (user == id){
+        window.profile.deleteProfile(event);
+     }
+     });
+    });
+}
+
+function cleanProfile (){
+  document.querySelector('.js-age-input').value = '';
+  document.querySelector('.js-profession-input').value = '';
+  document.querySelector('.js-interests').value = '';
 }
 
 function salve() {
@@ -28,22 +46,22 @@ function salve() {
   firebase.firestore().collection('persona').add(persona).then((docRef) => {
       document.querySelector('.display').insertAdjacentHTML('afterbegin', `
       <ul class= 'displayProfile' data-id='${docRef.id}'>
+      <li>${persona.name}</li>
       <img src='${persona.photo}' width='60px' height='60px'/>
-      ${persona.email}<br>
-      ${persona.name}<br>
-      ${persona.age}<br>
-      ${persona.profession}<br>
-      ${persona.interests}<br>
+      <li>Idade: ${persona.age}</li>
+      <li>E-mail: ${persona.email}</li>
+      <li>Profissão: ${persona.profession}</li>
+      <li>Interesses: ${persona.interests}</li>
       ${window.button.component({
         dataId: persona.id,
         title: '🗑️',
         class: 'primary-button',
-        disabled: 'disabled',
-        onClick: window.profile.deleteProfile,
+        onClick: window.profile.validateUser,
       })}
       </ul>
       `)
     });
+     window.profile.cleanProfile()
 }
 
 function Prev() {
@@ -61,23 +79,25 @@ function loadProfile () {
   firebase.firestore().collection('persona').get()
   .then((querySnapshot) => {
     querySnapshot.forEach((persona) => {
-      const postProfile = `<ul data-id='${persona.id}' class='info-persona'>
-      <li class=''> ${persona.data().name}</li>
-      <li id='persona_${persona.id}'><br>
-      Foto: <img src='${persona.data().photo}' width='60px' height='60px'/><br>
-      <li id='age'>Idade: ${persona.data().age}</li><br>
-      E-mail: ${persona.data().email}<br>
-      <li id='profession'>Profissão: ${persona.data().profession}</li><br>
-      <li id='interests'>Interesses: ${persona.data().interests}</li><br>
+      const postProfile = `<section class='card-persona'><ul data-id='${persona.id}' class='info-persona'>
+      <li> ${persona.data().name}</li>
+      <li id='persona_${persona.id}'>
+      Foto: <img src='${persona.data().photo}' width='60px' height='60px'/>
+      <li id='age'>Idade: ${persona.data().age}</li>
+      E-mail: ${persona.data().email}
+      <li id='profession'>Profissão: ${persona.data().profession}</li>
+      <li id='interests'>Interesses: ${persona.data().interests}</li>
       <li>
       ${window.button.component({
         dataId: persona.id,
         title: '🗑️',
         class: 'primary-button',
-        onClick: window.profile.deleteProfile,
-      })}</li>`
+        onClick: window.profile.validateUser,
+      })}</li>
+      </ul>
+      </section>`
 
-      document.querySelector('.display').innerHTML = postProfile;
+      document.querySelector('.display').innerHTML += postProfile;
     });
   });
 }
@@ -114,31 +134,31 @@ function Profile() {
   </header>
   <form class='profile'>
   <h1>Perfil</h1>
-  <br><br>
    ${Input({
     class: 'js-age-input',
     placeholder: 'Idade',
-    type: 'text',
-  })}<br><br>
+    type: 'text', required:''
+  })}
   ${Input({
     class: 'js-profession-input',
     placeholder: 'Profissão',
     type: 'text',
-  })}<br><br>
+  })}
   ${Input({
     class: 'js-interests',
     name: 'interests',
     type: 'text',
     placeholder: 'Escreva seus interesses. Ex: Front-End, Back-End, Inteligência Artificial...',
   })}
-  <br>
   ${Button({
-    class: 'primary-button',
+    class: 'save-button',
     title: 'Salvar',
-    disable: 'enable',
-    onClick: salve,
+    onClick: salve
   })}
+  <hr class='line' color='orange'>
+  <h3 class='users-title'>Usuários da RedeTech</h3>
   </form>
+
   <li class='display'>${displayPersona}</li>
   `;
 
@@ -149,7 +169,9 @@ window.profile = {
   loadProfile,
   deleteProfile,
   Prev,
-  signOut
+  signOut,
+  validateUser,
+  cleanProfile
 };
 
 export default Profile;

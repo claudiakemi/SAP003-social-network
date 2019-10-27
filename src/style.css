@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
   .container {
     margin: 15px;
     padding-top: 10px;
@@ -105,8 +105,8 @@
     margin: 15px;
   }
   .postMessage {
-    margin: 5px;
-    padding: 5px;
+    margin: 10px;
+    padding: 10px;
     border: solid;
     border-radius: 5px;
     list-style: none;
@@ -114,6 +114,7 @@
     background-color: #ffffff;
     font-family: 'Ubuntu', sans-serif;
     color: black;
+    word-wrap: break-word;
   }
   .bemvinda {
     padding: 15px;
@@ -140,10 +141,13 @@
     padding: 10px;
   }
   .logo-register {
-    width: 30%;
+    width: 70px;
+    height: 70px;
+    align-self: center;
+    position: relative;
     display: block;
-    /* justify-content: 50%; */
-    margin-left: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
   }
   .logo-feed {
     width: 70px;
@@ -154,15 +158,18 @@
     padding: 5%;
   }
   .register-form {
-    display: block;
-    margin-left: 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
   }
   .card {
     border: 3px solid orange;
     list-style: none;
     font-family: 'Ubuntu', sans-serif;
     color: black;
-    margin: 5px;
+    margin: 10px;
     border-radius: 5px;
     padding: 10px;
   }
@@ -170,6 +177,72 @@
     width: 70px;
     height: 70px;
     display: block;
+  }
+  .profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .js-age-input {
+    margin: 10px;
+    border-radius: 30px;
+    padding: 10px;
+  }
+  .js-profession-input {
+    margin: 10px;
+    border-radius: 30px;
+    padding: 10px;
+  }
+  .js-interests {
+    margin: 10px;
+    border-radius: 30px;
+    padding: 10px;
+  }
+  .info-persona {
+    margin: 5px;
+    padding: 5px;
+    border: solid;
+    border-radius: 5px;
+    list-style: none;
+    border-color: orange;
+    background-color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+    color: black;
+  }
+  .display {
+    list-style: none;
+  }
+  .displayProfile{
+    margin: 5px;
+    padding: 5px;
+    border: solid;
+    border-radius: 5px;
+    list-style: none;
+    border-color: orange;
+    background-color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+    color: black;
+  }
+  .users-title {
+    margin: 15px
+  }
+  .line {
+    width: 70%;
+  }
+  .save-button {
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 1px solid orange;
+    cursor: pointer;
+    width: 30%;
   }
 }
 
@@ -199,8 +272,8 @@
     width: 20%;
   }
   .textarea {
-    width: 90%;
-    margin: 15px;
+    width: 95%;
+    margin: 10px;
   }
   .content {
     position: absolute;
@@ -209,7 +282,6 @@
     flex-flow: column wrap;
     transform: translate(40%, 20%);
     width: 65%;
-    margin-top: 10%;
   }
   .google-btn {
     background-image: url('./google-icon2.png');
@@ -271,6 +343,7 @@
     font-family: 'Ubuntu', sans-serif;
     color: black;
     list-style: none;
+    word-wrap: break-word;
   }
   .left {
     background-color: transparent;
@@ -278,7 +351,6 @@
     color: #fff;
     cursor: pointer;
     list-style: none;
-    /* transform: translate(250%, -200%); */
     width: 10%;
     font-weight: bold;
     align-self: center;
@@ -289,7 +361,6 @@
     color: #fff;
     cursor: pointer;
     list-style: none;
-    /* transform: translate(250%, -200%); */
     width: 10%;
     font-weight: bold;
     align-self: center;
@@ -322,14 +393,18 @@
     list-style: none;
     font-family: 'Ubuntu', sans-serif;
     color: black;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
   }
   .logo-register {
-    width: 30%;
+    width: 70px;
+    height: 70px;
+    align-self: center;
+    position: relative;
     display: block;
-    justify-content: center;
-    margin-left: auto;
-    margin-left: 430%;
-    margin-top: 2%;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
   }
   .register-form {
     display: flex;
@@ -349,5 +424,75 @@
   .info-persona{
     margin-left: 10%;
     margin-top: 2%;
+  }
+  .profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .js-age-input {
+    margin: 10px;
+    border-radius: 30px;
+    padding: 10px;
+  }
+  .js-profession-input {
+    margin: 10px;
+    border-radius: 30px;
+    padding: 10px;
+  }
+  .js-interests {
+    margin: 10px;
+    border-radius: 30px;
+    padding: 10px;
+  }
+  .info-persona {
+    margin: 10px;
+    padding: 5px;
+    border: solid;
+    border-radius: 5px;
+    list-style: none;
+    border-color: orange;
+    background-color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+    color: black;
+  }
+  .display {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .displayProfile{
+    margin: 5px;
+    padding: 5px;
+    border: solid;
+    border-radius: 5px;
+    list-style: none;
+    border-color: orange;
+    background-color: #ffffff;
+    font-family: 'Ubuntu', sans-serif;
+    color: black;
+  }
+  .users-title {
+    margin: 15px
+  }
+  .line {
+    width: 70%;
+  }
+  .save-button {
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 1px solid orange;
+    cursor: pointer;
+    width: 20%;
   }
 }
